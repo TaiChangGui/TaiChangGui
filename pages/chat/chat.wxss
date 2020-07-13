@@ -1,0 +1,246 @@
+/* pages/chat/chat.wxss */
+page {
+  background-color: #f5f5f5;
+  height: 100%;
+}
+
+/* 聊天内容 */
+.news {
+  padding-top: 30rpx;
+  text-align: center;
+  /* height:100%; */
+  box-sizing: border-box;
+}
+
+#flag {
+  margin-bottom: 100rpx;
+  height: 30rpx;
+}
+
+.chat-notice {
+  text-align: center;
+  font-size: 30rpx;
+  padding: 10rpx 0;
+  color: #666;
+}
+
+.historycon {
+  height: 100%;
+  width: 100%;
+  /* flex-direction: column;   */
+  display: flex;
+  border-top: 0px;
+}
+
+/* 聊天 */
+.chat-news {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.ainews {
+  justify-content: flex-start;
+}
+
+.chat-news .my_right {
+  padding: 10rpx 10rpx;
+}
+
+.widthFix {
+  /* max-width: 600rpx; */
+  border-radius: 6px;
+  float: right;
+}
+
+.chat-news .name {
+  margin-right: 10rpx;
+}
+
+.chat-news .you_left {
+  float: left;
+  /* left: 5rpx;  */
+  /* padding: 10rpx 10rpx; */
+}
+
+.selectImg {
+  /* max-width: 600rpx; */
+  /* height: 150rpx; */
+}
+
+.my_right_info {
+  text-align: right;
+  padding-right: 20rpx;
+
+}
+
+.my_right .selectImg {
+  /* margin-right: 10rpx; */
+}
+
+.new_img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-top: -40rpx;
+}
+
+.new_txt {
+  /* max-width: 300rpx; */
+  display: inline-block;
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  background-color: #95d4ff;
+  padding: 5rpx 20rpx;
+  margin: 0 10rpx;
+  /* margin-left: 50rpx; */
+  text-align: left;
+}
+
+.my_right .new_txt {
+  margin-right: 0;
+}
+
+.you {
+  background-color: lightgreen;
+}
+
+/* .ai {
+  text-align: left;
+  padding-left: 20rpx;
+  flex-shrink: 0;
+  width: 40px;
+} */
+
+.ai view {
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  color: #bbb;
+}
+
+.my {
+  border-color: transparent transparent transparent #95d4ff;
+}
+
+.you {
+  border-color: transparent #95d4ff transparent transparent;
+}
+
+.hei {
+  margin-top: 50px;
+  height: 20rpx;
+}
+
+.history {
+  height: 100%;
+  margin-top: 15px;
+  padding: 10rpx;
+  font-size: 14px;
+  line-height: 40px;
+  word-break: break-all;
+  padding-bottom: 60rpx;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  z-index: -1;
+}
+
+/* 信息输入区域 */
+.message {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.sendMessage {
+  display: block;
+  height: 80rpx;
+  padding: 10rpx 10rpx;
+  background-color: #fff;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
+  z-index: 3;
+}
+
+.sendMessage input {
+  float: left;
+  width: 66%;
+  height: 100%;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #ccc;
+  padding: 0 10rpx;
+  font-size: 35rpx;
+  color: #666;
+}
+
+.sendMessage view {
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 60rpx;
+  text-align: center;
+  color: #999;
+  border: 1rpx solid #ccc;
+  border-radius: 50%;
+  margin-left: 10rpx;
+}
+
+.sendMessage button {
+  float: right;
+  font-size: 35rpx;
+}
+
+.increased {
+  width: 100%;
+  /* height: 150rpx; */
+  padding: 10rpx 0;
+  background-color: #fff;
+  display: flex;
+}
+
+.increased .image {
+  width: 320rpx;
+  height: 80rpx;
+  border: 3rpx solid #ccc;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  font-size: 35rpx;
+  margin-left: 30rpx;
+}
+
+@keyframes slidedown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.slidedown {
+  animation: slidedown 0.5s linear;
+}
+
+.slideup {
+  animation: slideup 0.5s linear;
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}

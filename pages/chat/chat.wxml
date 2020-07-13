@@ -1,0 +1,63 @@
+<!--pages/chat/chat.wxml-->
+<view class="news" bindtap='outbtn'>
+	<view class="chat-notice" wx:if="{{userInfo}}">欢迎无聊的 {{ userInfo.nickName }} 来聊天</view>
+	<view class="historycon">
+		<scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
+
+			<block wx:for="{{newslist}}" wx:key="index">
+				<view>{{item.date}}</view>
+				<!--自己的消息  -->
+				<view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
+					<view class='my_right'>
+						<block wx:if="{{item.type=='text'}}">
+							<view class='new_txt you'>{{item.content}}</view>
+						</block>
+						<block wx:if="{{item.type=='image'}}">
+							<image class="selectImg" mode="aspectFit" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>
+						</block>
+					</view>
+					<view class="my_right_info">
+						<!-- <view><text class="name">{{ item.nickName }}</text></view> -->
+						<image class='new_img' src="{{userInfo.avatarUrl}}"></image>
+					</view>
+				</view>
+				<!-- 别人的消息  -->
+				<view class="chat-news ainews" wx:else>
+					<view class="ai">
+						<view><text class="name">{{ item.nickName }}</text></view>
+						<image class='new_img' src="{{item.avatarUrl? item.avatarUrl:'images/h.jpg'}}"></image>
+					</view>
+					<view class='you_left'>
+						<block wx:if="{{item.type=='text'}}">
+							<view class='new_txt'>{{item.content}}</view>
+						</block>
+						<block wx:if="{{item.type=='image'}}">
+							<image class="widthFix" mode="aspectFit" src="{{item.images}}" bindtap="previewImg" data-src="{{item.images}}" lazy-load="true"></image>
+						</block>
+						<block wx:if="{{item.type=='face'}}">
+							<view>性别：{{gender[item.faceinfo.gender]}}</view>
+              <view>年龄：{{item.faceinfo.age}}</view>
+              <view>表情：{{expression[item.faceinfo.expression]}}</view>
+              <view>颜值：{{item.faceinfo.beauty}}</view>
+              <view>眼镜：{{glass[item.faceinfo.glass]}}</view>
+              <view>哈哈，我看透了你~~~~~~~~~</view>
+						</block>
+					</view>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+</view>
+<view id="flag"></view>
+<!-- 聊天输入 -->
+<view class="message">
+	<form bindreset="cleanInput" class="sendMessage">
+		<input type="text" bindtap="hideMedia" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input>
+		<view class="add" bindtap='increase'>+</view>
+		<button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue">发送</button>
+	</form>
+	<view class='increased {{aniStyle?"slideup":"slidedown"}}' wx:if="{{increase}}">
+		<view class="image" bindtouchstart="startRecord" bindtouchend="stopRecord">按着讲话</view>
+		<view class="image" bindtap='chooseImage'>我要上图</view>
+	</view>
+</view>
