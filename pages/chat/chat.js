@@ -240,18 +240,22 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         wx.uploadFile({
-          url: app.globalData.host + '/face',
+          url: 'http://127.0.0.1:7001/face',
           filePath: tempFilePaths[0],
           name: 'file',
           headers: {
             'Content-Type': 'form-data'
           },
           success: function (res) {
+            // console.log(res);
+            // console.log(tempFilePaths[0]);
             if (res.data) {
               let dialog = that.data.newslist;
+              // console.log(res.data);
+              // console.log(JSON.parse(res.data).src);
               dialog.push({
                 id: dialog.length + 1,
-                images: JSON.parse(res.data).src,
+                images: tempFilePaths[0],
                 type: 'image',
                 nickName: that.data.userInfo.nickName,
               });
@@ -260,7 +264,7 @@ Page({
               }, function () {
                 that.bottom();
                 // 展示分析结果
-                that.showFaceinfo(JSON.parse(res.data));
+                // that.showFaceinfo(JSON.parse(res.data));
               });
             }
           }
